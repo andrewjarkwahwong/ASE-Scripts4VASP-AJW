@@ -10,7 +10,7 @@ The intended audience is any DFT research that either started running a few calc
 # What is Provided in the Repo:
 
 ## A Detailed Guide & Tutorial:
-Please first refer to the LaTex PDF before running any of the scripts. It's a brief pdf is provided in "guide_PDF" to provide a comprehensive guide of my tips and tricks. It's more of a messy and brief guide on how to install ASE and utilize my scripts. More detailed documentation should be referred to \href{https://wiki.fysik.dtu.dk/ase/}{the ASE environment wiki as it is well documented}. 
+Please first refer to the LaTex PDF before running any of the scripts. It's a brief pdf is provided in "guide_PDF" to provide a comprehensive guide of my tips and tricks. It's more of a messy and brief guide on how to install ASE and utilize my scripts. More detailed documentation should be referred to https://wiki.fysik.dtu.dk/ase/ as the ASE environment wiki as it is well documented. 
 
 However, my guide will give you a walk through of my experiences installing ASE, how to use ASE to run a VASP calculation, and how to utilize my scripts in the context of catalysis. 
 
