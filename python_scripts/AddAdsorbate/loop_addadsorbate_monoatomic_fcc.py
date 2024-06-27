@@ -126,7 +126,7 @@ Returns:
 
 ## -- User Inputs -- ## 
 #Specify metal
-metal = 'Au'
+metal = ['Au','Ag']
 
 #specify fcc(111),(110),or (100)
 facet_int='100' #'111','110', or '100'
@@ -136,16 +136,12 @@ facet_int='100' #'111','110', or '100'
 surface_size = (3,3,5) 
 vacuum_size = 7.5
 
-slab = baresurface(metal,surface_size,vacuum_size) # This specifies a y x y slab with z layers and v vacuum each side of the slab.
-
-
 #Specify Adsorbate and the adsorption site
-adsorbate = 'Mg'
-position = 'ontop' #fcc(111):ontop, bridge, fcc, hcp
+adsorbate = ['Mg','H']
+position = ['ontop'] #fcc(111):ontop, bridge, fcc, hcp
                  #fcc(110):ontop, longbridge, shortbridge, hollow
                  #fcc(100):ontop, bridge, hollow
-height = 3 # z height in angstrom
-
+height =3 #height in angstrom 3
 ## Constrain the sub-surface atoms of the slab (CHECK Z_CUTOFF VALUE)
 if facet_int == '111':
     z = 13
@@ -153,25 +149,26 @@ elif facet_int == '110':
     z = 11
 elif facet_int == '100':
     z = 12
-constrained_slab = constrain_slab(slab, z_cutoff=z) # 3 for fcc(111) 5 layer
-                                                     # 2 for fcc(110) 5 layer
-                                                     # 3 for fcc(100) 5 layer 
 
 
 ## -- Code Runs -- ##
-#The Code will output open ase gui to visulaize the structure and save the output as a .vasp file (it's the same as a POSCAR but different name).
+#The Code will output open ase gui to visualize the structure and save the output as a .vasp file (it's the same as a POSCAR but different name).
 
-# Add the adsorbate
-adslab = addadsorbate(constrained_slab, adsorbate, height, position)
-Atoms2con('POSCAR', adslab, 'vasp')
-view(adslab)        
-#choose your own file name
-filename = f"{metal}_{facet_int}_{adsorbate}_{position}.vasp"
-Atoms2con(filename, adslab, 'vasp')
-# view(adslab)
-directory_name = os.path.splitext(filename)[0]
-if not os.path.exists(directory_name):
-    os.makedirs(directory_name)
-shutil.move(filename, os.path.join(directory_name, filename))
-os.rename(os.path.join(directory_name, filename), os.path.join(directory_name, "POSCAR"))
                                                                                                               
+# Loop is looping through metals and adsorbates. You can provide different lists for different variables (height, surface_size, acuum_size, position, etc. Just modify the loop!
+for m in metal:
+        for a in adsorbate:
+                for p in position:
+                    slab = baresurface(m,surface_size,vacuum_size)
+                    constrained_slab = constrain_slab(slab, z_cutoff=z )
+                    adslab = addadsorbate(constrained_slab, a, height, p)
+                    #choose your own file name
+                    filename = f"{m}_111_{a}_{p}.vasp"
+                    Atoms2con(filename, adslab, 'vasp')
+                    view(adslab) # comment to have gui not show up for each one
+                    directory_name = os.path.splitext(filename)[0]
+                    if not os.path.exists(directory_name):
+                        os.makedirs(directory_name)
+                    shutil.move(filename, os.path.join(directory_name, filename))
+                    os.rename(os.path.join(directory_name, filename), os.path.join(directory_name, "POSCAR"))
+
