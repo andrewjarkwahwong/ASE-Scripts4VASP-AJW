@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH -J JOB NAME in QUEUE
+#SBATCH -o Name of the Output File.o%j
+#SBATCH --ntasks-per-node=16 
+#SBATCH -p RM-shared
+#SBATCH -t 48:00:00
+#SBATCH -A chm200006p
+#SBATCH --mail-type BEGIN
+#SBATCH --mail-type END
+#SBATCH --mail-user YOUR EMAIL
+
+ulimit -s unlimited
+source activate /jet/home/jaw6647/miniconda3/; # Change to your environment
+conda activate conda; 
+module load intel/20.4 intelmpi/20.4-intel20.4
+export VASP_PP_PATH=/ocean/projects/chm200006p/jaw6647/Cation_Screening/vasp_pp/ #Need path of pseudopotentials (copy)
+export VASP_COMMAND="mpirun /ocean/projects/chm200006p/shared/VASP/vasp_std" 
+python3 runvasp.py
+
+
