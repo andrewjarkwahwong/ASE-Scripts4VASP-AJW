@@ -17,16 +17,18 @@ However, my guide will give you a walk through of my experiences installing ASE,
 ## Python Scripts:
 Python scripts are provided in python_scripts folder. The following scripts are currently provided.
 
-Running VASP through ASE
--runvasp.py: The ASE input file to run VASP
--asevasp: a SLURM submission script example.
+### Running VASP through ASE (Folder: RunningVASP_ASE)
+runvasp.py: The ASE input file to run VASP
+
+asevasp: a SLURM submission script example.
 
 
-Generating POSCARs of surface slabs and simple adsorbates
+### Generating POSCARs of surface slabs and simple adsorbate
+Bare_FCC_Facet.py: Creates bare fcc surface facets. (Folder: BareSurface)
 
--Bare_FCC_Facet.py: Creates bare fcc surface facets.
--addadsorbate_monoatomic_fcc.py: Places a monoatomic adsorbate on a surface slab.
--loop_addadsorbate_monoatomic_fcc.py: Utilizes a for loop to place a different single adsorbate on different surfaces.
+addadsorbate_monoatomic_fcc.py: Places a monoatomic adsorbate on a surface slab. (Folder: AddAdsorbate)
+
+loop_addadsorbate_monoatomic_fcc.py: Utilizes a for loop to place a different single adsorbate on different surfaces. (Folder: AddAdsorbate)
 
 ## Bash Scripts:
 Soon to provide these scripts in the bash_scripts folder that improved my quality-of-life as a DFT research.
