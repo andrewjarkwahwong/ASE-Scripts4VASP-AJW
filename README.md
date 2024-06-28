@@ -1,6 +1,7 @@
 # VASP_ASE_AJW
 ASE and bash scripts to assist in VASP5.4.4 and VASP6 calculations through my Ph.D.
-Author: Andrew Jark-Wah Wong and Jin Li
+
+Authors: Andrew Jark-Wah Wong and Jin Li
 
 Email: ajwongphd@gmail.com
 
